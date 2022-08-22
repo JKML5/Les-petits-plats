@@ -60,6 +60,8 @@ table {
 .body {
   max-width: 1240px;
   margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
 }
 
 .header {
