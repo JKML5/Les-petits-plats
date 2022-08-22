@@ -1,0 +1,19 @@
+.badge {
+    --bs-badge-padding-x: 20px;
+    --bs-badge-padding-y: 10px;
+    --bs-badge-font-size: 14px;
+
+    &__link {
+        color: #ffffff;
+        vertical-align: middle;
+        margin-left: 10px;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+
+    .close {
+        font-size: 20px;
+    }
+}
