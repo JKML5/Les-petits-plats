@@ -5,7 +5,9 @@
 @import "./base/box-sizing";
 @import "./base/typography";
 
+@import "./layout/body";
 @import "./layout/header";
 @import "./layout/footer";
 
 @import "./components/card";
+@import "./components/searchbar";

@@ -5,15 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les petits plats</title>
-    <link href="./public/css/main.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="./assets/favicon.png">
+    <link href="./public/css/main.css" rel="stylesheet" type="text/css" />
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <img src="./assets/logo.svg" alt="Logo Les petits plats" />
+
+      <form name="search" class="searchbar" method="post" action="#">
+        <input type="search" name="search" class="searchbar__input" placeholder="Rechercher une recette">
+        <a href="#" class="searchbar__button"><i class="fa-solid fa-search"></i></a>
+      </form>
     </header>
+
     <main class="main">
       <section class="section"></section>
     </main>
+
+     
+    <script src="https://kit.fontawesome.com/0548668964.js" crossorigin="anonymous"></script>
   </body>
 </html>
