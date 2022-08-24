@@ -1,0 +1,39 @@
+.recipe {
+    --bs-card-spacer-x: 20px;
+    --bs-card-spacer-y: 20px;
+    --bs-card-title-spacer-y: 20px;
+
+    width: 380px;
+    height: 364px;
+    border: none;
+
+    .card-body {
+        background-color: #e7e7e7;
+
+        .card-heading {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            line-height: 22px;
+
+            .recipe-preparation-time {
+                font-weight: 700;
+            }
+
+            .fa-clock {
+                font-size: 20px;
+                margin-right: 5px;
+            }
+        }
+
+        .card-text {
+            font-size: 12px;
+            line-height: 14px;
+            display: flex;
+
+            p {
+                flex-basis: 50%;
+            }
+        }
+    }
+}

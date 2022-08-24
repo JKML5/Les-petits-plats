@@ -60,11 +60,18 @@ table {
   box-sizing: border-box; /* Opera/IE 8+ */
 }
 
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 700;
+}
+
 .body {
   max-width: 1240px;
   margin: 0 auto;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
 }
 
 .header {
@@ -76,6 +83,12 @@ table {
 .searchkeys {
   display: flex;
   margin-top: 15px;
+}
+
+.recipes {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchbar {
@@ -174,4 +187,37 @@ table {
 }
 .badge .close {
   font-size: 20px;
+}
+
+.recipe {
+  --bs-card-spacer-x: 20px;
+  --bs-card-spacer-y: 20px;
+  --bs-card-title-spacer-y: 20px;
+  width: 380px;
+  height: 364px;
+  border: none;
+}
+.recipe .card-body {
+  background-color: #e7e7e7;
+}
+.recipe .card-body .card-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 22px;
+}
+.recipe .card-body .card-heading .recipe-preparation-time {
+  font-weight: 700;
+}
+.recipe .card-body .card-heading .fa-clock {
+  font-size: 20px;
+  margin-right: 5px;
+}
+.recipe .card-body .card-text {
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+}
+.recipe .card-body .card-text p {
+  flex-basis: 50%;
 }/*# sourceMappingURL=main.css.map */
