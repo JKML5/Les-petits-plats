@@ -73,6 +73,11 @@ table {
   margin-bottom: 25px;
 }
 
+.searchkeys {
+  display: flex;
+  margin-top: 15px;
+}
+
 .searchbar {
   margin-top: 15px;
   display: flex;
@@ -100,6 +105,58 @@ table {
   background-color: #E7E7E7;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.searchkey {
+  width: 170px;
+  height: 70px;
+  margin-right: 20px;
+}
+.searchkey__input {
+  color: #ffffff;
+  border: none;
+}
+.searchkey__input::placeholder {
+  color: #ffffff;
+}
+.searchkey__input:focus {
+  outline: none;
+  color: #ffffff;
+}
+.searchkey__input--blue, .searchkey__input--blue:focus {
+  background-color: #3282f7;
+}
+.searchkey__input--green, .searchkey__input--green:focus {
+  background-color: #68d9a4;
+}
+.searchkey__input--red, .searchkey__input--red:focus {
+  background-color: #ed6454;
+}
+.searchkey:last-child {
+  margin-right: 0;
+}
+.searchkey__button {
+  color: #ffffff !important;
+  border: none;
+}
+.searchkey__button:hover {
+  color: #e7e7e7;
+}
+.searchkey__button:focus {
+  color: #ffffff;
+}
+.searchkey__button--blue {
+  background-color: #3282f7 !important;
+}
+.searchkey__button--green {
+  background-color: #68d9a4 !important;
+}
+.searchkey__button--red {
+  background-color: #ed6454 !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
 }
 
 .badge {

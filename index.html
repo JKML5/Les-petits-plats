@@ -13,24 +13,67 @@
     <link href="./public/css/main.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="body">
+
+    <!-- Header -->
     <header class="header">
       <img src="./assets/logo.svg" alt="Logo Les petits plats" />
-
+      
       <form name="search" class="searchbar" method="post" action="#">
         <input type="search" name="search" class="searchbar__input" placeholder="Rechercher une recette">
         <a href="#" class="searchbar__button"><i class="fa-solid fa-search"></i></a>
       </form>
     </header>
+    <!-- /Header -->
 
-    <div class="badges">
-      <span class="badge bg-primary">
-        Coco
-        <a href="#" class="badge__link"><i class="fa-regular fa-circle-xmark close"></i></a>
-      </span>
-    </div>
+    <main>
+      <!-- Tags -->
+      <section class="badges">
+        <span class="badge bg-primary">
+          Coco
+          <a href="#" class="badge__link"><i class="fa-regular fa-circle-xmark close"></i></a>
+        </span>
+      </section>
+      <!-- /Tags -->
 
-    <main class="main">
-      <section class="section"></section>
+      <section class="searchkeys">
+
+        <!-- Search by keyword : Ingrédients -->
+        <div class="input-group searchkey">
+          <input type="text" class="form-control searchkey__input searchkey__input--blue" placeholder="Ingrédients" aria-label="Text input with dropdown button">
+          <button class="btn dropdown-toggle searchkey__button searchkey__button--blue" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <!-- /Search by keyword : Ingrédients -->
+        
+        <!-- Search by keyword : Appareils -->
+        <div class="input-group searchkey">
+          <input type="text" class="form-control searchkey__input searchkey__input--green" placeholder="Appareils" aria-label="Text input with dropdown button">
+          <button class="btn dropdown-toggle searchkey__button searchkey__button--green" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <!-- /Search by keyword : Appareils -->
+
+        <!-- Search by keyword : Ustensiles -->
+        <div class="input-group searchkey">
+          <input type="text" class="form-control searchkey__input searchkey__input--red" placeholder="Ustensiles" aria-label="Text input with dropdown button">
+          <button class="btn dropdown-toggle searchkey__button searchkey__button--red" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <!-- /Search by keyword : Ustensiles -->
+      </section>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
