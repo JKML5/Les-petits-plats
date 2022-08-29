@@ -89,6 +89,7 @@ strong {
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .searchbar {
@@ -194,11 +195,21 @@ strong {
   --bs-card-spacer-y: 20px;
   --bs-card-title-spacer-y: 20px;
   width: 380px;
-  height: 364px;
+  height: 380px;
   border: none;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+.recipe .card-img-top {
+  width: 380px;
+  height: 178px;
 }
 .recipe .card-body {
   background-color: #e7e7e7;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 202px;
+  overflow: hidden;
 }
 .recipe .card-body .card-heading {
   display: flex;
@@ -206,8 +217,15 @@ strong {
   font-size: 18px;
   line-height: 22px;
 }
+.recipe .card-body .card-heading .card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
 .recipe .card-body .card-heading .recipe-preparation-time {
   font-weight: 700;
+  white-space: nowrap;
 }
 .recipe .card-body .card-heading .fa-clock {
   font-size: 20px;
@@ -217,6 +235,14 @@ strong {
   font-size: 12px;
   line-height: 14px;
   display: flex;
+}
+.recipe .card-body .card-text .recipe-ingredients {
+  padding-right: 5px;
+}
+.recipe .card-body .card-text .recipe-preparation {
+  padding-left: 5px;
+  overflow: hidden;
+  max-height: 112px;
 }
 .recipe .card-body .card-text p {
   flex-basis: 50%;

@@ -4,11 +4,22 @@
     --bs-card-title-spacer-y: 20px;
 
     width: 380px;
-    height: 364px;
+    height: 380px;
     border: none;
+    margin-bottom: 50px;
+    border-radius: 5px;
+
+    .card-img-top {
+        width: 380px;
+        height: 178px;
+    }
 
     .card-body {
         background-color: #e7e7e7;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        height: 202px;
+        overflow: hidden;
 
         .card-heading {
             display: flex;
@@ -16,8 +27,16 @@
             font-size: 18px;
             line-height: 22px;
 
+            .card-title {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                padding-right: 10px;
+            }
+
             .recipe-preparation-time {
                 font-weight: 700;
+                white-space: nowrap;
             }
 
             .fa-clock {
@@ -30,6 +49,16 @@
             font-size: 12px;
             line-height: 14px;
             display: flex;
+
+            .recipe-ingredients {
+                padding-right: 5px;
+            }
+
+            .recipe-preparation {
+                padding-left: 5px;
+                overflow: hidden;
+                max-height: calc(14px * 8); // line-height x nb lines to show
+            }
 
             p {
                 flex-basis: 50%;
