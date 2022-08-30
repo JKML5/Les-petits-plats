@@ -14,4 +14,9 @@ class Recipe {
         this.appliance   = data.appliance
         this.ustensils   = data.ustensils
     }
+
+    createCard() {
+        const recipeCard = new RecipeCard(this)
+        return recipeCard.create()
+    }
 }
