@@ -38,38 +38,32 @@
       <div class="searchkeys">
 
         <!-- Search by keyword : Ingrédients -->
-        <div class="input-group searchkey">
-          <input type="text" class="form-control searchkey__input searchkey__input--blue" placeholder="Ingrédients" aria-label="Text input with dropdown button">
-          <button class="btn dropdown-toggle searchkey__button searchkey__button--blue" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <div class="input-group searchkey searchkey--blue">
+          <input type="text" class="form-control searchkey__input" placeholder="Ingrédients" aria-label="Text input with dropdown button">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu--ingredients" aria-labelledby="dropdownMenuReference"></ul>
         </div>
         <!-- /Search by keyword : Ingrédients -->
         
         <!-- Search by keyword : Appareils -->
-        <div class="input-group searchkey">
-          <input type="text" class="form-control searchkey__input searchkey__input--green" placeholder="Appareils" aria-label="Text input with dropdown button">
-          <button class="btn dropdown-toggle searchkey__button searchkey__button--green" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <div class="input-group searchkey searchkey--green">
+          <input type="text" class="form-control searchkey__input" placeholder="Appareils" aria-label="Text input with dropdown button">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu--appliances" aria-labelledby="dropdownMenuReference"></ul>
         </div>
         <!-- /Search by keyword : Appareils -->
 
         <!-- Search by keyword : Ustensiles -->
-        <div class="input-group searchkey">
-          <input type="text" class="form-control searchkey__input searchkey__input--red" placeholder="Ustensiles" aria-label="Text input with dropdown button">
-          <button class="btn dropdown-toggle searchkey__button searchkey__button--red" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-angle-down"></i></button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <div class="input-group searchkey searchkey--red">
+          <input type="text" class="form-control searchkey__input" placeholder="Ustensiles" aria-label="Text input with dropdown button">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu--ustensils" aria-labelledby="dropdownMenuReference"></ul>
         </div>
         <!-- /Search by keyword : Ustensiles -->
       </div>

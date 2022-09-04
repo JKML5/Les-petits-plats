@@ -39,4 +39,17 @@ class RecipeCard {
         wrapper.innerHTML = recipeCard
         return wrapper
     }
+
+    /**
+     * Return HTML element for tag list
+     * @param {string} tag 
+     * @returns 
+     */
+    static createTagCard(tag) {
+        const wrapper = document.createElement('li')
+
+        wrapper.innerHTML = `<a class="dropdown-item" href="#">${tag}</a>`
+
+        return wrapper
+    }
 }

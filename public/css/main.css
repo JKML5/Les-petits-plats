@@ -1,7 +1,3 @@
-* {
-  --bs-primary-rgb: 50,130,247;
-}
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -126,6 +122,9 @@ strong {
   height: 70px;
   margin-right: 20px;
 }
+.searchkey:last-child {
+  margin-right: 0;
+}
 .searchkey__input {
   color: #ffffff;
   border: none;
@@ -134,43 +133,36 @@ strong {
   color: #ffffff;
 }
 .searchkey__input:focus {
-  outline: none;
   color: #ffffff;
 }
-.searchkey__input--blue, .searchkey__input--blue:focus {
+.searchkey__btn {
+  border: none;
+  color: #ffffff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.searchkey .dropdown-toggle::after {
+  display: none !important;
+}
+.searchkey .dropdown-menu {
+  border: none;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.searchkey .dropdown-menu a {
+  color: #ffffff;
+}
+.searchkey .dropdown-menu .dropdown-item:hover {
+  filter: brightness(95%);
+}
+.searchkey--blue .searchkey__input, .searchkey--blue .searchkey__btn, .searchkey--blue .dropdown-menu, .searchkey--blue .dropdown-item {
   background-color: #3282f7;
 }
-.searchkey__input--green, .searchkey__input--green:focus {
+.searchkey--green .searchkey__input, .searchkey--green .searchkey__btn, .searchkey--green .dropdown-menu, .searchkey--green .dropdown-item {
   background-color: #68d9a4;
 }
-.searchkey__input--red, .searchkey__input--red:focus {
+.searchkey--red .searchkey__input, .searchkey--red .searchkey__btn, .searchkey--red .dropdown-menu, .searchkey--red .dropdown-item {
   background-color: #ed6454;
-}
-.searchkey:last-child {
-  margin-right: 0;
-}
-.searchkey__button {
-  color: #ffffff !important;
-  border: none;
-}
-.searchkey__button:hover {
-  color: #e7e7e7;
-}
-.searchkey__button:focus {
-  color: #ffffff;
-}
-.searchkey__button--blue {
-  background-color: #3282f7 !important;
-}
-.searchkey__button--green {
-  background-color: #68d9a4 !important;
-}
-.searchkey__button--red {
-  background-color: #ed6454 !important;
-}
-
-.dropdown-toggle::after {
-  display: none !important;
 }
 
 .badge {

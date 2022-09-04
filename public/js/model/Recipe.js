@@ -19,4 +19,40 @@ class Recipe {
         const recipeCard = new RecipeCard(this)
         return recipeCard.create()
     }
+
+    /**
+     * Returns the list of ingredients
+     * returns array
+     */
+    getIngredients() {
+        const resIngredients = []
+
+        for (let ingredient of this.ingredients) {
+            resIngredients.push(ingredient.ingredient)
+        }
+
+        return resIngredients
+    }
+
+    /**
+     * Returns appliance
+     * returns String
+     */
+    getAppliance() {
+        return this.appliance
+    }
+
+    /**
+     * Returns the list of ustensils
+     * returns array
+     */
+    getUstensils() {
+        const resUstensils = []
+
+        for (let ustensil of this.ustensils) {
+            resUstensils.push(ustensil)
+        }
+
+        return resUstensils
+    }
 }
