@@ -27,12 +27,7 @@
 
     <main>
       <!-- Tags -->
-      <div class="badges">
-        <span class="badge bg-primary">
-          Coco
-          <a href="#" class="badge__link"><i class="fa-regular fa-circle-xmark close"></i></a>
-        </span>
-      </div>
+      <div class="badges"></div>
       <!-- /Tags -->
 
       <div class="searchkeys">
@@ -40,30 +35,30 @@
         <!-- Search by keyword : Ingrédients -->
         <div class="input-group searchkey searchkey--blue">
           <input type="text" class="form-control searchkey__input" placeholder="Ingrédients" aria-label="Text input with dropdown button">
-          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="searchkey__btn--ingredients" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent" data-bs-auto-close="inside">
             <i class="fa-solid fa-angle-down"></i>
           </button>
-          <ul class="dropdown-menu dropdown-menu--ingredients" aria-labelledby="dropdownMenuReference"></ul>
+          <ul class="dropdown-menu dropdown-menu--ingredients" aria-labelledby="searchkey__btn--ingredients"></ul>
         </div>
         <!-- /Search by keyword : Ingrédients -->
         
         <!-- Search by keyword : Appareils -->
         <div class="input-group searchkey searchkey--green">
           <input type="text" class="form-control searchkey__input" placeholder="Appareils" aria-label="Text input with dropdown button">
-          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="searchkey__btn--appliances" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent" data-bs-auto-close="inside">
             <i class="fa-solid fa-angle-down"></i>
           </button>
-          <ul class="dropdown-menu dropdown-menu--appliances" aria-labelledby="dropdownMenuReference"></ul>
+          <ul class="dropdown-menu dropdown-menu--appliances" aria-labelledby="searchkey__btn--appliances"></ul>
         </div>
         <!-- /Search by keyword : Appareils -->
 
         <!-- Search by keyword : Ustensiles -->
         <div class="input-group searchkey searchkey--red">
           <input type="text" class="form-control searchkey__input" placeholder="Ustensiles" aria-label="Text input with dropdown button">
-          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+          <button type="button" class="searchkey__btn dropdown-toggle dropdown-toggle-split" id="searchkey__btn--ustensils" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent" data-bs-auto-close="inside">
             <i class="fa-solid fa-angle-down"></i>
           </button>
-          <ul class="dropdown-menu dropdown-menu--ustensils" aria-labelledby="dropdownMenuReference"></ul>
+          <ul class="dropdown-menu dropdown-menu--ustensils" aria-labelledby="searchkey__btn--ustensils"></ul>
         </div>
         <!-- /Search by keyword : Ustensiles -->
       </div>
