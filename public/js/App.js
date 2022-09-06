@@ -148,7 +148,7 @@ class App {
                 let results = []
 
                 for (let ingredient of this.ingredients) {
-                    if (ingredient.toLowerCase().indexOf(ingredientsListInput.toLowerCase().value) != -1) {
+                    if (ingredient.toLowerCase().indexOf(ingredientsListInput.value.toLowerCase()) != -1) {
                         results.push(ingredient)
                     }
                 }
