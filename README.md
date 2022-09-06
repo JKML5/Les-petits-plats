@@ -11,4 +11,4 @@ Projet 7 : Développez un algorithme de recherche en JavaScript
 Jean-Kamal Mougammadou
 
 ## Accès
-[https://jkml5.github.io/Les-petits-plats/](Mon site)
+[https://jkml5.github.io/Les-petits-plats/](https://jkml5.github.io/Les-petits-plats/)
