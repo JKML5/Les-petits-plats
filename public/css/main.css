@@ -166,9 +166,18 @@ strong {
 }
 
 .badge {
-  --bs-badge-padding-x: 20px;
-  --bs-badge-padding-y: 10px;
-  --bs-badge-font-size: 14px;
+  margin-right: 10px;
+  padding: 20px 10px;
+  font-size: 14px;
+}
+.badge--ingredients {
+  background-color: #3282f7;
+}
+.badge--appliances {
+  background-color: #68d9a4;
+}
+.badge--ustensils {
+  background-color: #ed6454;
 }
 .badge__link {
   color: #ffffff;

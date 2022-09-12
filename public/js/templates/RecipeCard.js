@@ -52,4 +52,19 @@ class RecipeCard {
 
         return wrapper
     }
+
+    /**
+     * Return tag in HTML format
+     * @param {string} tag 
+     * @returns 
+     */
+         static createTagBadge(tag, type) {
+            const wrapper = document.createElement('span')
+            wrapper.classList.add('badge')
+            wrapper.classList.add('badge--' + type)
+
+            wrapper.innerHTML = `${tag} <a href="#" class="badge__link"><i class="fa-regular fa-circle-xmark close"></i></a>`
+    
+            return wrapper
+        }
 }
