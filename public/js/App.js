@@ -4,6 +4,9 @@ class App {
         this.ingredientsListSection = document.querySelector('.dropdown-menu--ingredients')
         this.appliancesListSection  = document.querySelector('.dropdown-menu--appliances')
         this.ustensilsListSection   = document.querySelector('.dropdown-menu--ustensils')
+        this.tagsTextInputs         = document.querySelectorAll('.searchkey__input')
+
+        this.NB_CHAR_MAX = 3;
 
         this.recipes     = [] // Recettes
         this.ingredients = [] // Ingrédients
@@ -37,25 +40,23 @@ class App {
         const inputSearchbar = document.getElementById('searchbarInput')
 
         inputSearchbar.addEventListener('keyup', () => {
-            const NB_CHAR_MAX = 3;
-
-            if (inputSearchbar.value.length >= NB_CHAR_MAX) {
+            if (inputSearchbar.value.length >= this.NB_CHAR_MAX) {
                 let results = []
 
                 for (let recipe of this.recipes) {
                     // Recipe title
-                    if (recipe.name.toLowerCase().indexOf(inputSearchbar.value.toLowerCase()) != -1) {
+                    if (this.searchOK(recipe.name, inputSearchbar.value)) {
                         results[recipe.id] = recipe
                     }
-
+                    
                     // Recipe description
-                    if (recipe.description.toLowerCase().indexOf(inputSearchbar.value.toLowerCase()) != -1) {
+                    if (this.searchOK(recipe.description, inputSearchbar.value)) {
                         results[recipe.id] = recipe
                     }
-
+                    
                     // Ingredients name
                     for (let ingredient of recipe.ingredients) {
-                        if (ingredient.ingredient.toLowerCase().indexOf(inputSearchbar.value.toLowerCase()) != -1) {
+                        if (this.searchOK(ingredient.ingredient, inputSearchbar.value)) {
                             results[recipe.id] = recipe
                         }
                     }
@@ -119,83 +120,37 @@ class App {
     }
 
     addTagsSearchListener() {
-        const ingredientsListInput = document.querySelector('.searchkey--blue .searchkey__input')
-        const appliancesListInput  = document.querySelector('.searchkey--green .searchkey__input')
-        const ustensilsListInput   = document.querySelector('.searchkey--red .searchkey__input')
+        this.tagsTextInputs.forEach(tagTextInput => {
+            // Click on tag text box
+            tagTextInput.addEventListener('click', () => {
+                const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--' + tagTextInput.dataset.type);
+                searchDropdown.show();
+                tagTextInput.focus()
+            })
 
-        const NB_CHAR_MAX = 3;
+            // Type text
+            tagTextInput.addEventListener('keyup', () => {
+                if (tagTextInput.value.length >= app.NB_CHAR_MAX) {
+                    this[tagTextInput.dataset.type + 'ListSection'].innerHTML = '';
 
-        ingredientsListInput.addEventListener('click', () => {
-            const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--ingredients');
-            searchDropdown.show();
-            ingredientsListInput.focus()
-        })
-
-        appliancesListInput.addEventListener('click', () => {
-            const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--appliances');
-            searchDropdown.show();
-            appliancesListInput.focus()
-        })
-
-        ustensilsListInput.addEventListener('click', () => {
-            const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--ustensils');
-            searchDropdown.show();
-            ustensilsListInput.focus()
-        })
-
-        ingredientsListInput.addEventListener('keyup', () => {
-            if (ingredientsListInput.value.length >= NB_CHAR_MAX) {
-                let results = []
-
-                for (let ingredient of this.ingredients) {
-                    if (ingredient.toLowerCase().indexOf(ingredientsListInput.value.toLowerCase()) != -1) {
-                        results.push(ingredient)
+                    for (let tagValue of this[tagTextInput.dataset.type]) {
+                        if (this.searchOK(tagValue, tagTextInput.value)) {
+                            this[tagTextInput.dataset.type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagValue))
+                        }
                     }
                 }
-
-                this.ingredientsListSection.innerHTML = '';
-
-                for (let ingredient of results) {
-                    this.ingredientsListSection.appendChild(RecipeCard.createTagCard(ingredient))
-                }
-            }
+            })
         });
+    }
 
-        appliancesListInput.addEventListener('keyup', () => {
-            if (appliancesListInput.value.length >= NB_CHAR_MAX) {
-                let results = []
-
-                for (let appliance of this.appliances) {
-                    if (appliance.toLowerCase().indexOf(appliancesListInput.value.toLowerCase()) != -1) {
-                        results.push(appliance)
-                    }
-                }
-
-                this.appliancesListSection.innerHTML = '';
-
-                for (let appliance of results) {
-                    this.appliancesListSection.appendChild(RecipeCard.createTagCard(appliance))
-                }
-            }
-        });
-
-        ustensilsListInput.addEventListener('keyup', () => {
-            if (ustensilsListInput.value.length >= NB_CHAR_MAX) {
-                let results = []
-
-                for (let ustensil of this.ustensils) {
-                    if (ustensil.toLowerCase().indexOf(ustensilsListInput.value.toLowerCase()) != -1) {
-                        results.push(ustensil)
-                    }
-                }
-
-                this.ustensilsListSection.innerHTML = '';
-
-                for (let ustensil of results) {
-                    this.ustensilsListSection.appendChild(RecipeCard.createTagCard(ustensil))
-                }
-            }
-        });
+    /**
+     * Searching
+     * @param {String} extract text to search
+     * @param {String} fulltext 
+     * @returns 
+     */
+    searchOK(extract, fulltext) {
+        return (extract.toLowerCase().indexOf(fulltext.toLowerCase()) != -1) 
     }
 }
 
