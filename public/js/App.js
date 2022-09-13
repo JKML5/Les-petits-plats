@@ -1,7 +1,5 @@
 class App {
     constructor() { 
-        this.searchValue = ''; // Text to search
-
         // DOM elements
         this.inputSearchbar         = document.getElementById('searchbarInput')
         this.recipesSection         = document.querySelector('.recipes')
@@ -10,16 +8,19 @@ class App {
         this.ustensilsListSection   = document.querySelector('.dropdown-menu--ustensils')
         this.tagsTextInputs         = document.querySelectorAll('.searchkey__input')
         this.tags                   = document.querySelector('.badges')
-        
+
+        this.searchValue = ''; // Search textbox
         this.NB_CHAR_MAX = 3;
         this.TYPES       = ['ingredients', 'appliances', 'ustensils']
-
         this.recipes     = [] // Recettes
         this.ingredients = this.ingredientsTags = [] // Ingrédients
         this.appliances  = this.appliancesTags  = [] // Appareils
         this.ustensils   = this.ustensilsTags   = [] // Ustensils
     }
 
+    /**
+     * Start
+     */
     async main() {
         this.loadRecipes()
         this.addSearchListener()
@@ -27,14 +28,12 @@ class App {
     }
 
     /**
-     * Load recipes from Array and convert into instance of class
+     * Load recipes from Array and convert into instances of class
      */
     loadRecipes() {
         for (let recipe of recipes) {
             this.recipes.push(new Recipe(recipe))
         }
-
-        this.updateTagList(this.recipes);
     }
 
     /**
@@ -42,29 +41,21 @@ class App {
      */
     addSearchListener() {
         this.inputSearchbar.addEventListener('keyup', () => {
-            if (this.inputSearchbar.value.length >= this.NB_CHAR_MAX) {
-                this.searchValue = this.inputSearchbar.value
-                this.search()
-            } else {
-                this.searchValue = ''
-                this.search()
-            }
+            this.searchValue = (this.inputSearchbar.value.length >= this.NB_CHAR_MAX) ? this.inputSearchbar.value : ''
+            this.search()
         });
     }
 
     /**
-     * Update ingredients, appliances & ustensils dropbox content according to recipes
+     * Update ingredients, appliances & ustensils dropdown content according to recipes
      * @param array recipes 
      */
     updateTagList(recipes) {
-        // Clear old elements
-        this.ingredients = []
-        this.appliances  = []
-        this.ustensils   = []
-
-        this.ingredientsListSection.innerHTML = '';
-        this.appliancesListSection.innerHTML  = '';
-        this.ustensilsListSection.innerHTML   = '';
+        for (let type of this.TYPES) {
+            // Clear old items
+            this[type] = []
+            this[type + 'ListSection'].innerHTML = '';
+        }
 
         // Add new elements
         recipes.forEach(recipe => {
@@ -73,25 +64,20 @@ class App {
             this.ustensils.push(...recipe.getUstensils())
         });
 
-        // Remove duplicates
-        this.ingredients = [...new Set(this.ingredients)]
-        this.appliances  = [...new Set(this.appliances)]
-        this.ustensils   = [...new Set(this.ustensils)]
+        for (let type of this.TYPES) {
+            // Remove duplicates
+            this[type] = [...new Set(this[type])]
 
-        // Show
-        for (let ingredient of this.ingredients) {
-            this.ingredientsListSection.appendChild(RecipeCard.createTagCard(ingredient))
-        }
-
-        for (let appliance of this.appliances) {
-            this.appliancesListSection.appendChild(RecipeCard.createTagCard(appliance))
-        }
-
-        for (let ustensil of this.ustensils) {
-            this.ustensilsListSection.appendChild(RecipeCard.createTagCard(ustensil))
+            //Show
+            for (let tagName of this[type]) {
+                this[type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagName))
+            }
         }
     }
 
+    /**
+     * Listeners on tags input elements
+     */
     addTagsSearchListener() {
         this.tagsTextInputs.forEach(tagTextInput => {
             // Click on tag text box
@@ -108,19 +94,22 @@ class App {
 
                     for (let tagValue of this[tagTextInput.dataset.type]) {
                         if (this.searchOK(tagValue, tagTextInput.value)) {
-                            this[tagTextInput.dataset.type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagValue))
+                            const badgeElement = RecipeCard.createTagCard(tagValue)
+
+                            badgeElement.querySelector('.dropdown-item').addEventListener('click', () => {
+                                this.tagAdd(tagValue, tagTextInput.dataset.type)
+                            })
+
+                            this[tagTextInput.dataset.type + 'ListSection'].appendChild(badgeElement)
                         }
                     }
                 }
-
-                tagTextInput.parentNode.querySelectorAll('.dropdown-item').forEach(tagElt => {
-                    tagElt.addEventListener('click', () => {
-                        this.tagAdd(tagElt.text, tagTextInput.dataset.type)
-                    })
-                })
             })
         });
 
+        /**
+         * Click on dropdown items
+         */
         document.querySelectorAll('.dropdown-item').forEach(tagElt => {
             tagElt.addEventListener('click', () => {
                 this.tagAdd(tagElt.text, tagElt.parentNode.parentNode.dataset.type)
@@ -146,12 +135,12 @@ class App {
             if (this.searchOK(recipe.name, this.searchValue)) {
                 searchResults[recipe.id] = recipe
             }
-            
+
             // Recipe description
             if (this.searchOK(recipe.description, this.searchValue)) {
                 searchResults[recipe.id] = recipe
             }
-            
+
             // Ingredients name
             for (let ingredient of recipe.ingredients) {
                 if (this.searchOK(ingredient.ingredient, this.searchValue)) {
@@ -220,7 +209,7 @@ class App {
                     badgeElement.querySelector('.badge__link').addEventListener('click', () => {
                         this.tagRemove(tagName, type)
                     })
-            
+
                     this.tags.appendChild(badgeElement)
                 }
             }
@@ -231,7 +220,7 @@ class App {
         const that = this
         let ok
         let filteredRecipes = []
-        
+
         // On parcourt chaque recette
         recipes.forEach(function(recipe) {
             ok = true
@@ -260,7 +249,7 @@ class App {
                     i++
                 }
             }
-            
+
             if (ok) {
                 filteredRecipes.push(recipe)
             }
