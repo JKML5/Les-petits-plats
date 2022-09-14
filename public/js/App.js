@@ -236,6 +236,7 @@ class App {
 
             // Filter by appliances tag
             if (that.appliancesTags.length > 0) {
+                i = 0
                 while (ok && i < that.appliancesTags.length) {
                     ok = recipe.appliance === that.appliancesTags[i]
                     i++
@@ -244,6 +245,7 @@ class App {
 
             // Filter by ustensils tag
             if (that.ustensilsTags.length > 0) {
+                i = 0
                 while (ok && i < that.ustensilsTags.length) {
                     ok = recipe.ustensils.includes(that.ustensilsTags[i])
                     i++
