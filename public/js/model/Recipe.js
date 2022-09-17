@@ -13,6 +13,7 @@ class Recipe {
         this.description = data.description
         this.appliance   = data.appliance
         this.ustensils   = data.ustensils
+        this.searchKeys  = this.getSearchKeys()
     }
 
     createCard() {
@@ -54,5 +55,22 @@ class Recipe {
         }
 
         return resUstensils
+    }
+
+    /**
+     * Get all terms for search
+     * @returns array
+     */
+    getSearchKeys() {
+        let searchKeys = []
+
+        searchKeys.push(this.name)
+        searchKeys.push(this.description)
+
+        for (let ingredient of this.ingredients) {
+            searchKeys.push(ingredient.ingredient)
+        }
+
+        return searchKeys
     }
 }

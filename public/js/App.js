@@ -131,19 +131,8 @@ class App {
         let searchResults = []
 
         for (let i = 0 ; i < this.recipes.length ; i++) {
-            // Recipe title
-            if (this.searchOK(this.recipes[i].name, this.searchValue)) {
-                searchResults[this.recipes[i].id] = this.recipes[i]
-            }
-
-            // Recipe description
-            if (this.searchOK(this.recipes[i].description, this.searchValue)) {
-                searchResults[this.recipes[i].id] = this.recipes[i]
-            }
-
-            // Ingredients name
-            for (let ingredient of this.recipes[i].ingredients) {
-                if (this.searchOK(ingredient.ingredient, this.searchValue)) {
+            for (let searchKey of this.recipes[i].searchKeys) {
+                if (this.searchOK(searchKey, this.searchValue)) {
                     searchResults[this.recipes[i].id] = this.recipes[i]
                 }
             }
