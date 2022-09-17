@@ -130,21 +130,21 @@ class App {
     search() {
         let searchResults = []
 
-        for (let recipe of this.recipes) {
+        for (let i = 0 ; i < this.recipes.length ; i++) {
             // Recipe title
-            if (this.searchOK(recipe.name, this.searchValue)) {
-                searchResults[recipe.id] = recipe
+            if (this.searchOK(this.recipes[i].name, this.searchValue)) {
+                searchResults[this.recipes[i].id] = this.recipes[i]
             }
 
             // Recipe description
-            if (this.searchOK(recipe.description, this.searchValue)) {
-                searchResults[recipe.id] = recipe
+            if (this.searchOK(this.recipes[i].description, this.searchValue)) {
+                searchResults[this.recipes[i].id] = this.recipes[i]
             }
 
             // Ingredients name
-            for (let ingredient of recipe.ingredients) {
+            for (let ingredient of this.recipes[i].ingredients) {
                 if (this.searchOK(ingredient.ingredient, this.searchValue)) {
-                    searchResults[recipe.id] = recipe
+                    searchResults[this.recipes[i].id] = this.recipes[i]
                 }
             }
         }
