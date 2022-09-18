@@ -156,15 +156,9 @@ class App {
     }
 
     search() {
-        let searchResults = []
-
-        for (let i = 0 ; i < this.recipes.length ; i++) {
-            for (let searchKey of this.recipes[i].searchKeys) {
-                if (this.searchOK(searchKey, this.searchValue)) {
-                    searchResults[this.recipes[i].id] = this.recipes[i]
-                }
-            }
-        }
+        let searchResults = this.recipes.filter(recipe => {
+            return recipe.searchKeys.filter(searchKey => this.searchOK(searchKey, this.searchValue)).length > 0
+        })
 
         if (searchResults.length > 0) {
             // Filter by selected tags
