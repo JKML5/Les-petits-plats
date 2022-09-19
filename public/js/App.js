@@ -138,11 +138,13 @@ class App {
             }
         }
 
-        // Filter by selected tags
-        searchResults = this.filterByTag(searchResults)
-
-        // Update tags lists
-        this.updateTagList(searchResults)
+        if (searchResults.length > 0) {
+            // Filter by selected tags
+            searchResults = this.filterByTag(searchResults)
+    
+            // Update tags lists
+            this.updateTagList(searchResults)
+        }
 
         // Show search results
         if (searchResults.length === 0) {
