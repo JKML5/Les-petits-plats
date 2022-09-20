@@ -94,7 +94,7 @@ class App {
 
                     for (let tagValue of this[tagTextInput.dataset.type]) {
                         if (this.searchOK(tagValue, tagTextInput.value)) {
-                            const badgeElement = RecipeCard.createTagCard(tagValue)
+                            var badgeElement = RecipeCard.createTagCard(tagValue)
 
                             badgeElement.querySelector('.dropdown-item').addEventListener('click', () => {
                                 this.tagAdd(tagValue, tagTextInput.dataset.type)
@@ -103,7 +103,31 @@ class App {
                             this[tagTextInput.dataset.type + 'ListSection'].appendChild(badgeElement)
                         }
                     }
+                } else {
+                    this[tagTextInput.dataset.type + 'ListSection'].innerHTML = '';
+
+                    for (let tagValue of this[tagTextInput.dataset.type]) {
+                        var badgeElement = RecipeCard.createTagCard(tagValue)
+
+                        badgeElement.querySelector('.dropdown-item').addEventListener('click', () => {
+                            this.tagAdd(tagValue, tagTextInput.dataset.type)
+                        })
+
+                        this[tagTextInput.dataset.type + 'ListSection'].appendChild(badgeElement)
+                    }
                 }
+
+                if (this[tagTextInput.dataset.type + 'ListSection'].childElementCount <= 10) {
+                    badgeElement.parentNode.style.gridTemplateColumns = '200px';
+                } else if (this[tagTextInput.dataset.type + 'ListSection'].childElementCount <= 10) {
+                    badgeElement.parentNode.style.gridTemplateColumns = 'repeat(2, 200px)';
+                } else {
+                    badgeElement.parentNode.style.gridTemplateColumns = 'repeat(3, 200px)';
+                }
+
+                console.log(this[tagTextInput.dataset.type + 'ListSection'].childElementCount )
+
+
             })
         });
 

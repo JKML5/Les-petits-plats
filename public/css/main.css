@@ -146,14 +146,18 @@ strong {
 }
 .searchkey .dropdown-menu {
   border: none;
-  max-height: 300px;
+  max-height: 270px;
   overflow-y: scroll;
+  grid-template-columns: repeat(3, 200px);
 }
 .searchkey .dropdown-menu a {
   color: #ffffff;
 }
 .searchkey .dropdown-menu .dropdown-item:hover {
   filter: brightness(95%);
+}
+.searchkey .dropdown-menu.show {
+  display: grid;
 }
 .searchkey--blue .searchkey__input, .searchkey--blue .searchkey__btn, .searchkey--blue .dropdown-menu, .searchkey--blue .dropdown-item {
   background-color: #3282f7;
