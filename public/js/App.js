@@ -68,6 +68,9 @@ class App {
             // Remove duplicates
             this[type] = [...new Set(this[type])]
 
+            // Sort by name
+            this[type].sort()
+
             //Show
             for (let tagName of this[type]) {
                 this[type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagName))
