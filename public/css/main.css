@@ -153,6 +153,11 @@ strong {
 .searchkey .dropdown-menu a {
   color: #ffffff;
 }
+.searchkey .dropdown-menu .dropdown-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .searchkey .dropdown-menu .dropdown-item:hover {
   filter: brightness(95%);
 }

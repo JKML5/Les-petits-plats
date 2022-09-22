@@ -9,6 +9,11 @@ class App {
         this.tagsTextInputs         = document.querySelectorAll('.searchkey__input')
         this.tags                   = document.querySelector('.badges')
 
+        // Dropdown
+        this.ingredientsDropdown    = new bootstrap.Dropdown('#searchkey__btn--ingredients');
+        this.appliancesDropdown     = new bootstrap.Dropdown('#searchkey__btn--appliances');
+        this.ustensilsDropdown      = new bootstrap.Dropdown('#searchkey__btn--ingredients');
+
         this.searchValue = ''; // Search textbox
         this.NB_CHAR_MAX = 3;
         this.TYPES       = ['ingredients', 'appliances', 'ustensils']
@@ -82,55 +87,60 @@ class App {
      * Listeners on tags input elements
      */
     addTagsSearchListener() {
+        // Focus on input when dropdown os loaded
+        addEventListener('shown.bs.dropdown', (elt) => {
+            const type = elt.target.parentNode.dataset.type
+            document.getElementById('searchkey__input--' + type).focus()
+        });
+    
         this.tagsTextInputs.forEach(tagTextInput => {
+            const type = tagTextInput.parentNode.dataset.type
+
             // Click on tag text box
-            tagTextInput.addEventListener('click', () => {
-                const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--' + tagTextInput.dataset.type);
-                searchDropdown.show();
-                tagTextInput.focus()
+            tagTextInput.addEventListener('click', (e) => {
+                const searchDropdown = new bootstrap.Dropdown('#searchkey__btn--' + type)
+                searchDropdown.show()
+                e.stopPropagation(); // Don't bubble/capture the event any further
             })
 
             // Type text
             tagTextInput.addEventListener('keyup', () => {
-                if (tagTextInput.value.length >= app.NB_CHAR_MAX) {
-                    this[tagTextInput.dataset.type + 'ListSection'].innerHTML = '';
 
-                    for (let tagValue of this[tagTextInput.dataset.type]) {
+                if (tagTextInput.value.length >= app.NB_CHAR_MAX) {
+                    this[type + 'ListSection'].innerHTML = '';
+
+                    for (let tagValue of this[type]) {
                         if (this.searchOK(tagValue, tagTextInput.value)) {
                             var badgeElement = RecipeCard.createTagCard(tagValue)
 
                             badgeElement.querySelector('.dropdown-item').addEventListener('click', () => {
-                                this.tagAdd(tagValue, tagTextInput.dataset.type)
+                                this.tagAdd(tagValue, type)
                             })
 
-                            this[tagTextInput.dataset.type + 'ListSection'].appendChild(badgeElement)
+                            this[type + 'ListSection'].appendChild(badgeElement)
                         }
                     }
                 } else {
-                    this[tagTextInput.dataset.type + 'ListSection'].innerHTML = '';
+                    this[type + 'ListSection'].innerHTML = '';
 
-                    for (let tagValue of this[tagTextInput.dataset.type]) {
+                    for (let tagValue of this[type]) {
                         var badgeElement = RecipeCard.createTagCard(tagValue)
 
                         badgeElement.querySelector('.dropdown-item').addEventListener('click', () => {
-                            this.tagAdd(tagValue, tagTextInput.dataset.type)
+                            this.tagAdd(tagValue, type)
                         })
 
-                        this[tagTextInput.dataset.type + 'ListSection'].appendChild(badgeElement)
+                        this[type + 'ListSection'].appendChild(badgeElement)
                     }
                 }
 
-                if (this[tagTextInput.dataset.type + 'ListSection'].childElementCount <= 10) {
+                if (this[type + 'ListSection'].childElementCount <= 10) {
                     badgeElement.parentNode.style.gridTemplateColumns = '200px';
-                } else if (this[tagTextInput.dataset.type + 'ListSection'].childElementCount <= 10) {
+                } else if (this[type + 'ListSection'].childElementCount <= 10) {
                     badgeElement.parentNode.style.gridTemplateColumns = 'repeat(2, 200px)';
                 } else {
                     badgeElement.parentNode.style.gridTemplateColumns = 'repeat(3, 200px)';
                 }
-
-                console.log(this[tagTextInput.dataset.type + 'ListSection'].childElementCount )
-
-
             })
         });
 
@@ -139,7 +149,7 @@ class App {
          */
         document.querySelectorAll('.dropdown-item').forEach(tagElt => {
             tagElt.addEventListener('click', () => {
-                this.tagAdd(tagElt.text, tagElt.parentNode.parentNode.dataset.type)
+                this.tagAdd(tagElt.text, tagElt.parentNode.parentNode.parentNode.dataset.type)
             })
         })
     }

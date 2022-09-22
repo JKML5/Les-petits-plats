@@ -42,8 +42,14 @@
                 color: #ffffff;
             }
 
-            .dropdown-item:hover {
-                filter: brightness(95%);
+            .dropdown-item {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &:hover {
+                    filter: brightness(95%);
+                }
             }
 
             &.show {
