@@ -71,9 +71,13 @@ class App {
             // Sort by name
             this[type].sort()
 
-            //Show
+            // Show
             for (let tagName of this[type]) {
-                this[type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagName))
+
+                // Don't show if already selected
+                if (!this[type + 'Tags'].includes(tagName)) {
+                    this[type + 'ListSection'].appendChild(RecipeCard.createTagCard(tagName))
+                }
             }
         }
     }
