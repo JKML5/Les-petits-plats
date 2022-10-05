@@ -148,12 +148,12 @@ strong {
   border: none;
   max-height: 270px;
   overflow-y: scroll;
-  grid-template-columns: repeat(3, 200px);
 }
 .searchkey .dropdown-menu a {
   color: #ffffff;
 }
 .searchkey .dropdown-menu .dropdown-item {
+  width: 220px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -163,6 +163,15 @@ strong {
 }
 .searchkey .dropdown-menu.show {
   display: grid;
+}
+.searchkey .dropdown-menu > :nth-child(1) {
+  grid-column: 1;
+}
+.searchkey .dropdown-menu > :nth-last-child(n+10) ~ :nth-child(2) {
+  grid-column: 2;
+}
+.searchkey .dropdown-menu > :nth-last-child(n+20) ~ :nth-child(3) {
+  grid-column: 3;
 }
 .searchkey--blue .searchkey__input, .searchkey--blue .searchkey__btn, .searchkey--blue .dropdown-menu, .searchkey--blue .dropdown-item {
   background-color: #3282f7;

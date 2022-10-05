@@ -9,11 +9,6 @@ class App {
         this.tagsTextInputs         = document.querySelectorAll('.searchkey__input')
         this.tags                   = document.querySelector('.badges')
 
-        // Dropdown
-        this.ingredientsDropdown    = new bootstrap.Dropdown('#searchkey__btn--ingredients');
-        this.appliancesDropdown     = new bootstrap.Dropdown('#searchkey__btn--appliances');
-        this.ustensilsDropdown      = new bootstrap.Dropdown('#searchkey__btn--ingredients');
-
         this.searchValue = ''; // Search textbox
         this.NB_CHAR_MAX = 3;
         this.TYPES       = ['ingredients', 'appliances', 'ustensils']
@@ -132,14 +127,6 @@ class App {
 
                         this[type + 'ListSection'].appendChild(badgeElement)
                     }
-                }
-
-                if (this[type + 'ListSection'].childElementCount <= 10) {
-                    badgeElement.parentNode.style.gridTemplateColumns = '200px';
-                } else if (this[type + 'ListSection'].childElementCount <= 10) {
-                    badgeElement.parentNode.style.gridTemplateColumns = 'repeat(2, 200px)';
-                } else {
-                    badgeElement.parentNode.style.gridTemplateColumns = 'repeat(3, 200px)';
                 }
             })
         });

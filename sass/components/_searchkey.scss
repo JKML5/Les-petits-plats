@@ -36,13 +36,13 @@
             border: none;
             max-height: 270px;
             overflow-y: scroll;
-            grid-template-columns: repeat(3, 200px);
 
             a {
                 color: #ffffff;
             }
 
             .dropdown-item {
+                width: 220px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -54,6 +54,21 @@
 
             &.show {
                 display: grid;
+            }
+
+            // By default -> 1 column
+            & > :nth-child(1) {
+                grid-column: 1;
+            }
+
+            // 10-20 elements -> 2 columns
+            & > :nth-last-child(n + 10) ~ :nth-child(2) { 
+                grid-column: 2;
+            }
+
+            // 20+ elements -> 3 columns
+            & > :nth-last-child(n + 20) ~ :nth-child(3) {
+                grid-column: 3;
             }
         }
     }
