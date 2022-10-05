@@ -178,10 +178,10 @@ class App {
         if (searchResults.length > 0) {
             // Filter by selected tags
             searchResults = this.filterByTag(searchResults)
-    
-            // Update tags lists
-            this.updateTagList(searchResults)
         }
+
+        // Update tags lists
+        this.updateTagList(searchResults)
 
         // Show search results
         if (searchResults.length === 0) {
